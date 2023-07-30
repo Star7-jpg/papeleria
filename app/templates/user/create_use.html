@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar usuario
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre(placeholder="Nombre") }}
+
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_paterno.label }}
+            {{ form.ape_paterno() }}
+
+            {% if form.ape_paterno.errors %}
+                {% for error in form.ape_paterno.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_materno.label }}
+            {{ form.ape_materno() }}
+
+            {% if form.ape_materno.errors %}
+                {% for error in form.ape_materno.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.nom_usuario.label }}
+            {{ form.nom_usuario() }}
+
+            {% if form.nom_usuario.errors %}
+                {% for error in form.nom_usuario.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.contrasenia.label }}
+            {{ form.contrasenia() }}
+
+            {% if form.contrasenia.errors %}
+                {% for error in form.contrasenia.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+    <a href="{{ url_for('usuario.user') }}" class="btn btn-warning"> Regresar</a>
+{% endblock content %}

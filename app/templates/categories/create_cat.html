@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar Categoria
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre() }}
+
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div>
+            {{ form.submit(class="btn") }}
+        </div>
+    </form>
+{% endblock content %}

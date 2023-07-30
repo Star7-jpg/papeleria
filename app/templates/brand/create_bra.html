@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar Marca
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre(placeholder="Nombre") }}
+
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div>
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+    <a href="{{ url_for('marca.brand') }}" class="btn btn-warning"> Regresar</a>
+{% endblock content %}

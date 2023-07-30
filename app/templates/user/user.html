@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    usuarios
+{% endblock %}
+
+{% block content %}
+    <h1>usuarios Page</h1>
+    <h2>Lista de usuarios</h2>
+    <a href="{{ url_for('usuario.create_use') }}" class="btn btn-success">Nuevo usuario</a>
+    <table id="user">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Nombre de usuario</th>
+                <th>Contraseña</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for use in user %}
+                <tr>
+                    <td>{{ use.id_usuario }}</td>
+                    <td>{{ use.nombre }}</td>
+                    <td>{{ use.ape_paterno }}</td>
+                    <td>{{ use.ape_materno }}</td>
+                    <td>{{ use.nom_usuario }}</td>
+                    <td>{{ use.contrasenia }}</td>
+
+                    <td>
+                        <a href="{{ url_for('usuario.update_use', id_usuario=use.id_usuario) }}">
+                            <i class="fa fa-refresh"></i> 
+                        </a> 
+                        <form method="post" action="{{ url_for('usuario.delete_use', id_usuario=use.id_usuario) }}">
+                            <button type="submit"
+                                    onclick="return confirm('seguro')">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

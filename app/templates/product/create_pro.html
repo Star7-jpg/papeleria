@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar usuario
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre(placeholder="Nombre") }}
+
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.precio.label }}
+            {{ form.precio() }}
+
+            {% if form.precio.errors %}
+                {% for error in form.precio.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.descripcion.label }}
+            {{ form.descripcion() }}
+
+            {% if form.descripcion.errors %}
+                {% for error in form.descripcion.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_marca.label }}
+            {{ form.id_marca() }}
+
+            {% if form.id_marca.errors %}
+                {% for error in form.id_marca.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_categoria.label }}
+            {{ form.id_categoria() }}
+
+            {% if form.id_categoria.errors %}
+                {% for error in form.id_categoria.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+    <a href="{{ url_for('usuario.user') }}" class="btn btn-warning"> Regresar</a>
+{% endblock content %}

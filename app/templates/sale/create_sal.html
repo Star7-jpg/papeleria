@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar usuario
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.fecha.label }}
+            {{ form.fecha(placeholder="Fecha") }}
+
+            {% if form.fecha.errors %}
+                {% for error in form.fecha.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.total.label }}
+            {{ form.total() }}
+
+            {% if form.total.errors %}
+                {% for error in form.total.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_producto.label }}
+            {{ form.id_producto() }}
+
+            {% if form.id_producto.errors %}
+                {% for error in form.id_producto.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_usuario.label }}
+            {{ form.id_usuario() }}
+
+            {% if form.id_usuario.errors %}
+                {% for error in form.id_usuario.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+        <div>
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+    <a href="{{ url_for('ventas.sale') }}" class="btn btn-warning"> Regresar</a>
+{% endblock content %}
